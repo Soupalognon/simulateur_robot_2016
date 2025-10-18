@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<robot name="Assemblage_Carcasse Webots">
+    <webots>
+        <plugin type="webots_ros2_control::Ros2Control" />
+
+        <plugin type="simulateur_robot_2016.plugin_example.PluginExample">
+            <parameterExample>someValue</parameterExample>
+        </plugin>
+    </webots>
+
+    <ros2_control name="WebotsControl" type="system">
+        <hardware>
+            <plugin>webots_ros2_control::Ros2ControlSystem</plugin>
+        </hardware>
+        <joint name="wheel_right_joint">
+            <state_interface name="position"/>
+            <command_interface name="velocity"/>
+        </joint>
+        <joint name="wheel_left_joint">
+            <state_interface name="position"/>
+            <command_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+</robot>

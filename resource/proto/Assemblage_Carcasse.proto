@@ -1,0 +1,368 @@
+#VRML_SIM R2025a utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Assemblage_Carcasse
+# Extracted from: /home/gdu/dev_ws/src/simulateur_robot_2016/resource/urdf/Assemblage_Carcasse.urdf
+
+PROTO Assemblage_Carcasse [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Assemblage_Carcasse"  # Is `Robot.name`.
+  field  SFString    controller      "void"                 # Is `Robot.controller`.
+  field  MFString    controllerArgs  []                     # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""                     # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE                  # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE                   # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE                  # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          baseColor 0.792157 0.819608 0.933333
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/base_link.STL"
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor 0.098502 0.092204 0.062404
+          dampingConstant 0.1
+          staticFriction 0.1
+        }
+        device [
+          RotationalMotor {
+            name "arm_left_joint"
+            maxVelocity 3.14
+            minPosition -2.8
+            maxTorque 5.0
+          }
+          PositionSensor {
+            name "arm_left_joint_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.098502 0.092204 0.062404
+          children [
+            Shape {
+              appearance DEF arm_left_link_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF arm_left_link Mesh {
+                url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/arm_left_link.STL"
+              }
+            }
+          ]
+          name "arm_left_link"
+          boundingObject USE arm_left_link
+          physics Physics {
+            density -1
+            mass 0.064715
+            centerOfMass [ -0.021923 0.040867 -0.004592 ]
+            inertiaMatrix [
+              4.677164e-05 8.981799e-05 7.031419e-05
+              2.658160e-05 9.220703e-09 -4.361576e-09
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 0.000000 1.000000
+          anchor 0.098502 -0.092196 0.062404
+          dampingConstant 0.1
+          staticFriction 0.1
+        }
+        device [
+          RotationalMotor {
+            name "arm_right_joint"
+            maxVelocity 3.14
+            maxPosition 2.8
+            maxTorque 5.0
+          }
+          PositionSensor {
+            name "arm_right_joint_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.098502 -0.092196 0.062404
+          children [
+            Shape {
+              appearance DEF arm_right_link_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF arm_right_link Mesh {
+                url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/arm_right_link.STL"
+              }
+            }
+          ]
+          name "arm_right_link"
+          boundingObject USE arm_right_link
+          physics Physics {
+            density -1
+            mass 0.064715
+            centerOfMass [ -0.022435 -0.040589 -0.004592 ]
+            inertiaMatrix [
+              4.611169e-05 9.047794e-05 7.031420e-05
+              -2.603339e-05 9.441800e-09 4.324252e-09
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 1.000000 0.000000
+          anchor -0.025498 0.105871 0.020500
+          dampingConstant 0.1
+          staticFriction 0.1
+        }
+        device [
+          RotationalMotor {
+            name "wheel_left_joint"
+            maxVelocity 10.0
+            maxTorque 10.0
+          }
+          PositionSensor {
+            name "wheel_left_joint_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.025498 0.105871 0.020500
+          children [
+            Pose {
+              rotation 1.000000 0.000000 0.000000 1.570000
+              children [
+                Shape {
+                  appearance DEF wheel_left_link_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    radius 0.0325
+                    height 0.03
+                  }
+                }
+              ]
+            }
+          ]
+          name "wheel_left_link"
+          boundingObject Pose {
+            rotation 1.000000 0.000000 0.000000 1.570000
+            children [
+              Cylinder {
+                radius 0.0325
+                height 0.03
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.098395
+            centerOfMass [ 0.000000 0.000000 -0.000000 ]
+            inertiaMatrix [
+              3.366328e-05 3.366328e-05 5.256736e-05
+              -3.739551e-22 -6.616079e-20 -1.031525e-23
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000000 1.000000 0.000000
+          anchor -0.025498 -0.109129 0.020500
+          dampingConstant 0.1
+          staticFriction 0.1
+        }
+        device [
+          RotationalMotor {
+            name "wheel_right_joint"
+            maxVelocity 10.0
+            maxTorque 10.0
+          }
+          PositionSensor {
+            name "wheel_right_joint_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.025498 -0.109129 0.020500
+          children [
+            Pose {
+              rotation 1.000000 0.000000 0.000000 1.570000
+              children [
+                Shape {
+                  appearance DEF wheel_right_link_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1.000000
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    radius 0.0325
+                    height 0.03
+                  }
+                }
+              ]
+            }
+          ]
+          name "wheel_right_link"
+          boundingObject Pose {
+            rotation 1.000000 0.000000 0.000000 1.570000
+            children [
+              Cylinder {
+                radius 0.0325
+                height 0.03
+              }
+            ]
+          }
+          physics Physics {
+            density -1
+            mass 0.098395
+            centerOfMass [ 0.000000 0.000000 -0.000000 ]
+            inertiaMatrix [
+              3.366328e-05 3.366328e-05 5.256736e-05
+              -4.332197e-23 -6.511520e-20 -2.411316e-23
+            ]
+          }
+        }
+      }
+      Solid {
+        translation -0.073751 0.140008 -0.006500
+        children [
+          Shape {
+            appearance DEF caster1_link_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.005
+            }
+          }
+        ]
+        name "caster1_link"
+        boundingObject Sphere {
+          radius 0.005
+        }
+        physics Physics {
+          density -1
+          mass 0.000524
+          centerOfMass [ 0.000000 -0.000000 0.000000 ]
+          inertiaMatrix [
+            5.235988e-09 5.235988e-09 5.235988e-09
+            0.000000e+00 2.938736e-39 1.957591e-54
+          ]
+        }
+      }
+      Solid {
+        translation 0.092002 0.108008 -0.006500
+        children [
+          Shape {
+            appearance DEF caster2_link_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.005
+            }
+          }
+        ]
+        name "caster2_link"
+        boundingObject Sphere {
+          radius 0.005
+        }
+        physics Physics {
+          density -1
+          mass 0.000524
+          centerOfMass [ -0.000000 0.000000 0.000000 ]
+          inertiaMatrix [
+            5.235988e-09 5.235988e-09 5.235988e-09
+            0.000000e+00 2.938736e-39 1.957591e-54
+          ]
+        }
+      }
+      Solid {
+        translation -0.073751 -0.139992 -0.006500
+        children [
+          Shape {
+            appearance DEF caster3_link_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.005
+            }
+          }
+        ]
+        name "caster3_link"
+        boundingObject Sphere {
+          radius 0.005
+        }
+        physics Physics {
+          density -1
+          mass 0.000524
+          centerOfMass [ 0.000000 -0.000000 0.000000 ]
+          inertiaMatrix [
+            5.235988e-09 5.235988e-09 5.235988e-09
+            0.000000e+00 2.938736e-39 1.957591e-54
+          ]
+        }
+      }
+      Solid {
+        translation 0.092002 -0.107992 -0.006500
+        children [
+          Shape {
+            appearance DEF caster4_link_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1.000000
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.005
+            }
+          }
+        ]
+        name "caster4_link"
+        boundingObject Sphere {
+          radius 0.005
+        }
+        physics Physics {
+          density -1
+          mass 0.000524
+          centerOfMass [ 0.000000 0.000000 0.000000 ]
+          inertiaMatrix [
+            5.235988e-09 5.235988e-09 5.235988e-09
+            0.000000e+00 2.938736e-39 1.957591e-54
+          ]
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 3.332679
+      centerOfMass [ -0.014641 -0.003865 0.178241 ]
+      inertiaMatrix [
+        1.815173e-02 8.373138e-03 1.474209e-02
+        -4.855749e-05 5.004258e-06 5.688202e-06
+      ]
+    }
+  }
+}
