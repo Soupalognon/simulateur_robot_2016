@@ -6,6 +6,14 @@
         <plugin type="simulateur_robot_2016.plugin_example.PluginExample">
             <parameterExample>someValue</parameterExample>
         </plugin>
+
+        <device reference="range_meter_1" type="DistanceSensor">
+            <ros>
+                <topicName>/range_meter</topicName>
+                <enabled>true</enabled>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
     </webots>
 
     <ros2_control name="WebotsControl" type="system">

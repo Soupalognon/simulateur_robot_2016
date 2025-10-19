@@ -465,7 +465,6 @@
         rpy="0 0 0" />
       <geometry>
       <sphere radius="0.005"/>
-
       </geometry>
       <material
         name="">
@@ -492,6 +491,50 @@
       link="base_link" />
     <child
       link="caster4_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link
+    name="range_meter_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+        <mass
+        value="0.000523598775598299" />
+        <inertia
+        ixx="5.23598775598299E-09"
+        ixy="0"
+        ixz="2.93873587705572E-39"
+        iyy="5.23598775598299E-09"
+        iyz="1.95759134039956E-54"
+        izz="5.23598775598299E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+      <sphere radius="0.01"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="range_meter_joint"
+    type="fixed">
+    <origin
+      xyz="0.1 -0.10799191350927 0.2"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="range_meter_link" />
     <axis
       xyz="0 0 0" />
   </joint>

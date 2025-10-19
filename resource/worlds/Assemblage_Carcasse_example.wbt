@@ -33,31 +33,12 @@ WorldInfo {
 Viewpoint {
   orientation -0.2878951570967451 -0.16506369377382343 0.9433293992651676 4.177335774513749
   position 9.141595121588473 4.8923306199482335 3.8476210861955575
-  follow "TurtleBot3Burger:LDS-01"
+  follow "Assemblage_Carcasse"
 }
 TexturedBackground {
   texture "empty_office"
   skybox FALSE
 }
-# TurtleBot3Burger {
-#   translation 6.36 0 0
-#   controller "<extern>"
-#   controllerArgs [
-#     ""
-#   ]
-#   extensionSlot [
-#     Solid {
-#       name "imu_link"
-#     }
-#     GPS {
-#     }
-#     InertialUnit {
-#       name "inertial_unit"
-#     }
-#     RobotisLds01 {
-#     }
-#   ]
-# }
 Assemblage_Carcasse {
   translation 6.36 -1 0.02
   controller "<extern>"

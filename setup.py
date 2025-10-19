@@ -1,5 +1,5 @@
 from setuptools import find_packages, setup
-from glob import glob
+from glob import glob, iglob
 import os 
 
 package_name = 'simulateur_robot_2016'
@@ -30,7 +30,7 @@ setup(
         ('share/' + package_name + '/resource/meshes/collision/', glob('resource/meshes/collision/*.*')),
         ('share/' + package_name + '/resource/meshes/visual/', glob('resource/meshes/visual/*.*')),
         ('share/' + package_name + '/resource/urdf/', glob('resource/urdf/*.*')),
-        ('share/' + package_name + '/resource/worlds/', glob('resource/worlds/*.*')),
+        ('share/' + package_name + '/resource/worlds/', glob('resource/worlds/*.*') + glob('resource/worlds/.*.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
