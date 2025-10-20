@@ -1,6 +1,16 @@
 <?xml version="1.0" ?>
 <robot name="Assemblage_Carcasse Webots">
     <webots>
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <enabled>true</enabled>
+            <topicName>/imu</topicName>
+            <alwaysOn>true</alwaysOn>
+            <frameName>imu_link</frameName>
+            <gyroName>imu gyro</gyroName>
+            <accelerometerName>imu accelerometer</accelerometerName>
+            <inertialUnitName>imu inertial</inertialUnitName>
+        </plugin>
+
         <plugin type="webots_ros2_control::Ros2Control" />
 
         <plugin type="simulateur_robot_2016.plugin_example.PluginExample">

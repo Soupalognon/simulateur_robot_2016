@@ -10,12 +10,12 @@ PROTO Assemblage_Carcasse [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
   field  SFString    name            "Assemblage_Carcasse"  # Is `Robot.name`.
-  field  SFString    controller      "void"                     # Is `Robot.controller`.
-  field  MFString    controllerArgs  []                         # Is `Robot.controllerArgs`.
-  field  SFString    customData      ""                         # Is `Robot.customData`.
-  field  SFBool      supervisor      FALSE                      # Is `Robot.supervisor`.
-  field  SFBool      synchronization TRUE                       # Is `Robot.synchronization`.
-  field  SFBool      selfCollision   FALSE                      # Is `Robot.selfCollision`.
+  field  SFString    controller      "void"                 # Is `Robot.controller`.
+  field  MFString    controllerArgs  []                     # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""                     # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE                  # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE                   # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE                  # Is `Robot.selfCollision`.
 ]
 {
   Robot {
@@ -37,6 +37,18 @@ PROTO Assemblage_Carcasse [
         geometry DEF base_link Mesh {
           url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/base_link.STL"
         }
+      }
+      InertialUnit {
+        name "imu inertial"
+      }
+      Accelerometer {
+        name "imu accelerometer"
+      }
+      Gyro {
+        name "imu gyro"
+      }
+      Compass {
+        name "imu compass"
       }
       HingeJoint {
         jointParameters HingeJointParameters {
