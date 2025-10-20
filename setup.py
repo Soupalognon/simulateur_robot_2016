@@ -26,7 +26,7 @@ setup(
 
         ('share/' + package_name, glob('launch/*.*')),
         ('share/' + package_name + '/resource/', glob('resource/*.*')),
-        ('share/' + package_name + '/resource/proto', glob('resource/proto/*.*')),
+        ('share/' + package_name + '/resource/proto/', glob('resource/proto/*.*')),
         ('share/' + package_name + '/resource/meshes/collision/', glob('resource/meshes/collision/*.*')),
         ('share/' + package_name + '/resource/meshes/visual/', glob('resource/meshes/visual/*.*')),
         ('share/' + package_name + '/resource/urdf/', glob('resource/urdf/*.*')),

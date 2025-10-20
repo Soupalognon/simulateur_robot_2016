@@ -4,6 +4,8 @@
 # This is a proto file for Webots for the Assemblage_Carcasse
 # Extracted from: /home/gdu/dev_ws/src/simulateur_robot_2016/resource/urdf/Assemblage_Carcasse.urdf
 
+EXTERNPROTO "distance_sensor.proto"
+
 PROTO Assemblage_Carcasse [
   field  SFVec3f     translation     0 0 0
   field  SFRotation  rotation        0 0 1 0
@@ -355,27 +357,11 @@ PROTO Assemblage_Carcasse [
       Solid {
         translation 0.100000 -0.107992 0.200000
         children [
-          DistanceSensor {
-            rotation 0.0 0.0 0.0 0.0
+          DEF EPUCK_PS0 distance_sensor {
+            translation 0 0 0
+            rotation 0 0 0 0
             name "range_meter_1"
-            children [
-            ]
-            lookupTable [
-              0 4095 0.002
-              0.005 2133.33 0.003
-              0.01 1465.73 0.007
-              0.015 601.46 0.0406
-              0.02 383.84 0.01472
-              0.03 234.93 0.0241
-              0.04 158.03 0.0287
-              0.05 120 0.04225
-              0.06 104.09 0.03065
-              0.07 67.19 0.04897
-              10  20  0
-            ]
-            type "infra-red"
             numberOfRays 1
-            aperture 0.1
           }
           Shape {
             appearance DEF range_meter_link_material PBRAppearance {
