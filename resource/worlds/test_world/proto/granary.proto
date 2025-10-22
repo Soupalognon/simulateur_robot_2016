@@ -1,0 +1,84 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+
+PROTO granary [
+  field SFString   name         "granary"
+  field MFString   url          [""]
+]
+{
+    Solid {
+        name IS name
+        children [
+            Solid {
+                translation 1.5 1.775 0.0275
+                children [
+                    Floor {
+                        translation 0 0 0.0277
+                        size 1.8 0.45
+                        tileSize 1.8 0.45
+                        appearance Appearance {
+                            texture ImageTexture {
+                            url IS url
+                            repeatS FALSE
+                            repeatT FALSE
+                            }
+                            textureTransform TextureTransform {
+                            rotation 1.57
+                            translation 0 -1
+                            }
+                        }
+                    }
+                    DEF wall Shape {
+                    appearance PBRAppearance {
+                        baseColor 0 0 0
+                        roughness 1
+                        metalness 0
+                    }
+                    geometry Box {
+                        size 1.8 0.45 0.055
+                    }
+                    }
+                ]
+                name "solid_1"
+                boundingObject USE wall
+            }
+            Solid {
+                translation 0.6075 1.775 0.0625
+                rotation 0 0 1 1.57
+                children [
+                    DEF wall Shape {
+                    appearance PBRAppearance {
+                        baseColor 1 0 0
+                        roughness 1
+                        metalness 0
+                    }
+                    geometry Box {
+                        size 0.45 0.015 0.015
+                    }
+                    }
+                ]
+                name "solid_2"
+                boundingObject USE wall
+            }
+            Solid {
+                translation 2.3925 1.775 0.0625
+                rotation 0 0 1 1.57
+                children [
+                    DEF wall Shape {
+                    appearance PBRAppearance {
+                        baseColor 1 0 0
+                        roughness 1
+                        metalness 0
+                    }
+                    geometry Box {
+                        size 0.45 0.015 0.015
+                    }
+                    }
+                ]
+                name "solid_3"
+                boundingObject USE wall
+            }
+        ]
+    }
+}

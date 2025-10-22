@@ -1,0 +1,39 @@
+#VRML_SIM R2025a utf8
+
+PROTO yellow_tile [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 0 0
+  field SFString   name         "yellow_tile"
+  field SFColor    color        1 0.733 0
+]
+{
+    Solid {
+        name IS name
+        translation IS translation
+        rotation IS rotation
+        children [
+            DEF tile Shape {
+                appearance PBRAppearance {
+                    baseColor IS color
+                    roughness 1
+                    metalness 0
+                }
+                geometry Box {
+                    size 0.15 0.05 0.03
+                }
+            }
+        ]
+        boundingObject USE tile
+        physics Physics {
+            density -1
+            mass 0.01
+            centerOfMass [
+            0 0 0
+            ]
+            inertiaMatrix [
+            1 1 1
+            0 0 0
+            ]
+        }
+    }
+}

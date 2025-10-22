@@ -1,0 +1,98 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "../proto/blue_tile.proto"
+EXTERNPROTO "../proto/yellow_tile.proto"
+EXTERNPROTO "../proto/arena_cdr2026.proto"
+EXTERNPROTO "../proto/granary.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.0006249998565482448 -0.9999996403193344 -0.000573355370710299 4.626249641652754
+  position 2.2484167135196373 0.413723292473883 8.829134623678776
+}
+DirectionalLight {
+  intensity 2
+}
+DEF arena_cdr2026 arena_cdr2026 {
+  url [
+    "background.jpg"
+  ]
+}
+DEF granary granary {
+  url [
+    "gravary.jpg"
+  ]
+}
+DEF blue_tile blue_tile {
+  translation 0.175 0.325 0.015
+  name "blue_tile_1"
+}
+DEF blue_tile blue_tile {
+  translation 0.175 0.375001 0.015
+  name "blue_tile_2"
+}
+DEF yellow_tile yellow_tile {
+  translation 0.175 0.425002 0.015
+  name "yellow_tile_1"
+}
+DEF yellow_tile yellow_tile {
+  translation 0.175 0.475003 0.015
+  name "yellow_tile_2"
+}
+DEF blue_tile blue_tile {
+  translation 0.175 1.125 0.015
+  name "blue_tile_3"
+}
+DEF yellow_tile yellow_tile {
+  translation 0.175 1.175001 0.015
+  name "yellow_tile_3"
+}
+DEF blue_tile blue_tile {
+  translation 0.175 1.225002 0.015
+  name "blue_tile_4"
+}
+DEF yellow_tile yellow_tile {
+  translation 0.175 1.275 0.015
+  name "yellow_tile_4"
+}
+DEF blue_tile blue_tile {
+  translation 1.025 0.175 0.015
+  rotation 0 0 1 1.57
+  name "blue_tile_5"
+}
+DEF yellow_tile yellow_tile {
+  translation 1.075 0.175 0.015
+  rotation 0 0 1 1.57
+  name "yellow_tile_5"
+}
+DEF blue_tile blue_tile {
+  translation 1.125 0.175 0.015
+  rotation 0 0 1 1.57
+  name "blue_tile_6"
+}
+DEF yellow_tile yellow_tile {
+  translation 1.175 0.175 0.015
+  rotation 0 0 1 1.57
+  name "yellow_tile_6"
+}
+DEF blue_tile blue_tile {
+  translation 1.075 0.8 0.015
+  rotation 0 0 1 1.57
+  name "blue_tile_7"
+}
+DEF yellow_tile yellow_tile {
+  translation 1.125 0.8 0.015
+  rotation 0 0 1 1.57
+  name "yellow_tile_7"
+}
+DEF yellow_tile yellow_tile {
+  translation 1.175 0.8 0.015
+  rotation 0 0 1 1.57
+  name "yellow_tile_8"
+}
+DEF blue_tile blue_tile {
+  translation 1.225 0.8 0.015
+  rotation 0 0 1 1.57
+  name "blue_tile_8"
+}
