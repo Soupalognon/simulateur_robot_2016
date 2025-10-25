@@ -2,12 +2,12 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/blue_tile.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/yellow_tile.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/arena_cdr2026.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/granary.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/cursor.proto"
-EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/tiles_group.proto"
+EXTERNPROTO "proto/blue_tile.proto"
+EXTERNPROTO "proto/yellow_tile.proto"
+EXTERNPROTO "proto/arena_cdr2026.proto"
+EXTERNPROTO "proto/granary.proto"
+EXTERNPROTO "proto/cursor.proto"
+EXTERNPROTO "proto/tiles_group.proto"
 
 WorldInfo {
 }
@@ -26,7 +26,7 @@ DEF arena_cdr2026 arena_cdr2026 {
 }
 DEF granary granary {
   url [
-    "../proto/granary.jpg"
+    "proto/granary.jpg"
   ]
 }
 DEF tiles_group tiles_group {

@@ -26,11 +26,16 @@ setup(
 
         ('share/' + package_name, glob('launch/*.*')),
         ('share/' + package_name + '/resource/', glob('resource/*.*')),
-        ('share/' + package_name + '/resource/proto/', glob('resource/proto/*.*')),
-        ('share/' + package_name + '/resource/meshes/collision/', glob('resource/meshes/collision/*.*')),
-        ('share/' + package_name + '/resource/meshes/visual/', glob('resource/meshes/visual/*.*')),
-        ('share/' + package_name + '/resource/urdf/', glob('resource/urdf/*.*')),
-        ('share/' + package_name + '/resource/worlds/', glob('resource/worlds/*.*') + glob('resource/worlds/.*.*')),
+
+        ('share/' + package_name + '/resource/Robot/', glob('resource/Robot/*.*') + glob('resource/Robot/.*.*')),
+        ('share/' + package_name + '/resource/Robot/meshes/collision/', glob('resource/Robot/meshes/collision/*.*')),
+        ('share/' + package_name + '/resource/Robot/meshes/visual/', glob('resource/Robot/meshes/visual/*.*')),
+        ('share/' + package_name + '/resource/Robot/proto/', glob('resource/Robot/proto/*.*')),
+        ('share/' + package_name + '/resource/Robot/urdf/', glob('resource/Robot/urdf/*.*')),
+        
+        ('share/' + package_name + '/resource/World_CDR_2026/', glob('resource/World_CDR_2026/*.*') + glob('resource/World_CDR_2026/.*.*')),
+        ('share/' + package_name + '/resource/World_CDR_2026/meshes/', glob('resource/World_CDR_2026/meshes/*.*')),
+        ('share/' + package_name + '/resource/World_CDR_2026/proto/', glob('resource/World_CDR_2026/proto/*.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

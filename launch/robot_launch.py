@@ -26,7 +26,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([resource_dir, 'worlds', world]),
+        world=PathJoinSubstitution([resource_dir, 'Robot', world]),
         mode=mode,
         ros2_supervisor=True
     )
@@ -66,8 +66,8 @@ def generate_launch_description():
     )
     ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner]
 
-    robot_description_path = os.path.join(resource_dir, 'urdf', 'Assemblage_Carcasse_webots.urdf')
-    ros2_control_params = os.path.join(resource_dir, 'ros2control.yml')
+    robot_description_path = os.path.join(resource_dir, 'Robot', 'urdf', 'Assemblage_Carcasse_webots.urdf')
+    ros2_control_params = os.path.join(resource_dir, 'Robot', 'ros2control.yml')
     use_twist_stamped = 'ROS_DISTRO' in os.environ and (os.environ['ROS_DISTRO'] in ['rolling', 'jazzy', 'kilted'])
     if use_twist_stamped:
         mappings = [('/diffdrive_controller/cmd_vel', '/cmd_vel'), ('/diffdrive_controller/odom', '/odom')]
@@ -122,7 +122,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'world',
-            default_value='Assemblage_Carcasse_example.wbt',
+            default_value='World_Test.wbt',
             description='Choose one of the world files from `/simulateur_robot_2016/resource/worlds` directory'
         ),
         DeclareLaunchArgument(

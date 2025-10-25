@@ -18,7 +18,7 @@ PROTO cursor [
                 }
                 geometry Mesh {
                     url [
-                    "../../../meshes/visual/cursor.stl"
+                    "../meshes/cursor.stl"
                     ]
                 }
             }

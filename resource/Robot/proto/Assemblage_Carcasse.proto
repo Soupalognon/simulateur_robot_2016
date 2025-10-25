@@ -2,7 +2,7 @@
 # license: Apache License 2.0
 # license url: http://www.apache.org/licenses/LICENSE-2.0
 # This is a proto file for Webots for the Assemblage_Carcasse
-# Extracted from: /home/gdu/dev_ws/src/simulateur_robot_2016/resource/urdf/Assemblage_Carcasse.urdf
+# Extracted from: urdf/Assemblage_Carcasse.urdf
 
 EXTERNPROTO "distance_sensor.proto"
 
@@ -35,7 +35,7 @@ PROTO Assemblage_Carcasse [
           metalness 0
         }
         geometry DEF base_link Mesh {
-          url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/base_link.STL"
+          url "../meshes/visual/base_link.STL"
         }
       }
       InertialUnit {
@@ -77,7 +77,7 @@ PROTO Assemblage_Carcasse [
                 metalness 0
               }
               geometry DEF arm_left_link Mesh {
-                url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/arm_left_link.STL"
+                url "../meshes/visual/arm_left_link.STL"
               }
             }
           ]
@@ -121,7 +121,7 @@ PROTO Assemblage_Carcasse [
                 metalness 0
               }
               geometry DEF arm_right_link Mesh {
-                url "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/meshes/visual/arm_right_link.STL"
+                url "../meshes/visual/arm_right_link.STL"
               }
             }
           ]
