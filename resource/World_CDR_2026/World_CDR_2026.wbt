@@ -8,10 +8,20 @@ EXTERNPROTO "proto/arena_cdr2026.proto"
 EXTERNPROTO "proto/granary.proto"
 EXTERNPROTO "proto/cursor.proto"
 EXTERNPROTO "proto/tiles_group.proto"
-EXTERNPROTO "../Robot/proto/Assemblage_Carcasse.proto"
+IMPORTABLE EXTERNPROTO "../Robot/proto/Assemblage_Carcasse.proto"
 
 WorldInfo {
   basicTimeStep 20
+
+  # contactProperties [
+  #   ContactProperties {
+  #     material1 "arm"
+  #     material2 "tile"
+  #     coulombFriction [
+  #       -1, -1, -1
+  #     ]
+  #   }
+  # ]
 }
 Viewpoint {
   orientation -0.05737314792485143 0.9595978227862124 0.2754638640568921 0.4274647429076606

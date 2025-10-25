@@ -77,12 +77,13 @@ PROTO Assemblage_Carcasse [
                 metalness 0
               }
               geometry DEF arm_left_link Mesh {
-                url "../meshes/visual/arm_left_link.STL"
+                url "../meshes/collision/arm_left_link.stl"
               }
             }
           ]
           name "arm_left_link"
           boundingObject USE arm_left_link
+          contactMaterial "arm"
           physics Physics {
             density -1
             mass 0.064715
@@ -121,12 +122,13 @@ PROTO Assemblage_Carcasse [
                 metalness 0
               }
               geometry DEF arm_right_link Mesh {
-                url "../meshes/visual/arm_right_link.STL"
+                url "../meshes/collision/arm_right_link.stl"
               }
             }
           ]
           name "arm_right_link"
           boundingObject USE arm_right_link
+          contactMaterial "arm"
           physics Physics {
             density -1
             mass 0.064715

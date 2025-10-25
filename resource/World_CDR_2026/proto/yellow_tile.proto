@@ -19,11 +19,12 @@ PROTO yellow_tile [
                     metalness 0
                 }
                 geometry Box {
-                    size 0.15 0.05 0.03
+                    size 0.12 0.05 0.06
                 }
             }
         ]
         boundingObject USE tile
+        contactMaterial "tile"
         physics Physics {
             density -1
             mass 0.01

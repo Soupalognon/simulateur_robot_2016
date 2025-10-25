@@ -5,6 +5,9 @@ controller_manager:
     diffdrive_controller:
       type: diff_drive_controller/DiffDriveController
 
+    position_controller:
+      type: position_controllers/JointGroupPositionController
+
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -25,3 +28,9 @@ diffdrive_controller:
     linear:
       x:
         max_velocity: 0.2 # Maximal speed of turtlebot
+
+position_controller:
+  ros__parameters:
+    joints:
+      - arm_left_joint
+      - arm_right_joint

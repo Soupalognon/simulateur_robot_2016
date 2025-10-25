@@ -80,7 +80,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_left_link.STL" />
+          filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_left_link.stl" />
       </geometry>
     </collision>
   </link>
@@ -141,7 +141,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_right_link.STL" />
+          filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_right_link.stl" />
       </geometry>
     </collision>
   </link>

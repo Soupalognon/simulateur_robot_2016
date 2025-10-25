@@ -64,7 +64,16 @@ def generate_launch_description():
         prefix=controller_manager_prefix,
         arguments=['joint_state_broadcaster'] + controller_manager_timeout,
     )
-    ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner]
+
+    position_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        output='screen',
+        prefix=controller_manager_prefix,
+        arguments=['position_controller'] + controller_manager_timeout,
+    )
+
+    ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner, position_controller_spawner]
 
     robot_description_path = os.path.join(resource_dir, 'Robot', 'urdf', 'Assemblage_Carcasse_webots.urdf')
     ros2_control_params = os.path.join(resource_dir, 'Robot', 'ros2control.yml')
@@ -73,7 +82,7 @@ def generate_launch_description():
         mappings = [('/diffdrive_controller/cmd_vel', '/cmd_vel'), ('/diffdrive_controller/odom', '/odom')]
     else:
         mappings = [('/diffdrive_controller/cmd_vel_unstamped', '/cmd_vel'), ('/diffdrive_controller/odom', '/odom')]
-    turtlebot_driver = WebotsController(
+    robot_driver = WebotsController(
         robot_name='Assemblage_Carcasse',
         parameters=[
             {'robot_description': robot_description_path,
@@ -85,38 +94,10 @@ def generate_launch_description():
         respawn=True
     )
 
-    # Navigation
-    navigation_nodes = []
-    os.environ['TURTLEBOT3_MODEL'] = 'burger'
-    nav2_map = os.path.join(package_dir, 'resource', 'turtlebot3_burger_example_map.yaml')
-    nav2_params = os.path.join(package_dir, 'resource', 'nav2_params.yaml')
-    if 'turtlebot3_navigation2' in get_packages_with_prefixes():
-        turtlebot_navigation = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(
-                get_package_share_directory('turtlebot3_navigation2'), 'launch', 'navigation2.launch.py')),
-            launch_arguments=[
-                ('map', nav2_map),
-                ('params_file', nav2_params),
-                ('use_sim_time', use_sim_time),
-            ],
-            condition=launch.conditions.IfCondition(use_nav))
-        navigation_nodes.append(turtlebot_navigation)
-
-    # SLAM
-    if 'turtlebot3_cartographer' in get_packages_with_prefixes():
-        turtlebot_slam = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(
-                get_package_share_directory('turtlebot3_cartographer'), 'launch', 'cartographer.launch.py')),
-            launch_arguments=[
-                ('use_sim_time', use_sim_time),
-            ],
-            condition=launch.conditions.IfCondition(use_slam))
-        navigation_nodes.append(turtlebot_slam)
-
-    # Wait for the simulation to be ready to start navigation nodes
+    # Wait for the simulation to be ready
     waiting_nodes = WaitForControllerConnection(
-        target_driver=turtlebot_driver,
-        nodes_to_start=navigation_nodes + ros_control_spawners
+        target_driver=robot_driver,
+        nodes_to_start= ros_control_spawners
     )
 
     return LaunchDescription([
@@ -136,7 +117,7 @@ def generate_launch_description():
         robot_state_publisher,
         footprint_publisher,
 
-        turtlebot_driver,
+        robot_driver,
         waiting_nodes,
 
         # This action will kill all nodes once the Webots simulation has exited
