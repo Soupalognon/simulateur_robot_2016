@@ -3,31 +3,39 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
 
 PROTO granary [
-  field SFString   name         "granary"
-  field MFString   url          [""]
+    field SFVec3f    translation  0 0 0
+    field SFString   name         "granary"
+    field MFString   url          [""]
 ]
 {
     Solid {
+        translation IS translation
         name IS name
         children [
             Solid {
                 translation 1.5 1.775 0.0275
                 children [
-                    Floor {
-                        translation 0 0 0.0277
-                        size 1.8 0.45
-                        tileSize 1.8 0.45
-                        appearance Appearance {
-                            texture ImageTexture {
-                            url IS url
-                            repeatS FALSE
-                            repeatT FALSE
+                    Solid {
+                        translation 0 0 0.0276
+                        children [
+                            DEF ground Shape {
+                            appearance Appearance {
+                                texture ImageTexture {
+                                url IS url
+                                repeatS FALSE
+                                repeatT FALSE
+                                }
+                                textureTransform TextureTransform {
+                                rotation 1.57
+                                translation 0 -1
+                                }
                             }
-                            textureTransform TextureTransform {
-                            rotation 1.57
-                            translation 0 -1
+                            geometry Plane {
+                                size 1.8 0.45
                             }
-                        }
+                            }
+                        ]
+                        # boundingObject USE ground
                     }
                     DEF wall Shape {
                     appearance PBRAppearance {

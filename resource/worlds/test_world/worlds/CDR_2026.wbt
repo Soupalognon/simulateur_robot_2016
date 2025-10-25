@@ -1,18 +1,23 @@
 #VRML_SIM R2025a utf8
 
-EXTERNPROTO "../proto/blue_tile.proto"
-EXTERNPROTO "../proto/yellow_tile.proto"
-EXTERNPROTO "../proto/arena_cdr2026.proto"
-EXTERNPROTO "../proto/granary.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/blue_tile.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/yellow_tile.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/arena_cdr2026.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/granary.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/cursor.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/tiles_group.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.0006249998565482448 -0.9999996403193344 -0.000573355370710299 4.626249641652754
-  position 2.2484167135196373 0.413723292473883 8.829134623678776
+  orientation -0.05737314792485143 0.9595978227862124 0.2754638640568921 0.4274647429076606
+  position -3.184852351735873 0.12182307545429322 2.0138557823579966
 }
-DirectionalLight {
-  intensity 2
+TexturedBackgroundLight {
+}
+TexturedBackground {
 }
 DEF arena_cdr2026 arena_cdr2026 {
   url [
@@ -21,78 +26,54 @@ DEF arena_cdr2026 arena_cdr2026 {
 }
 DEF granary granary {
   url [
-    "gravary.jpg"
+    "../proto/granary.jpg"
   ]
 }
-DEF blue_tile blue_tile {
-  translation 0.175 0.325 0.015
-  name "blue_tile_1"
+DEF tiles_group tiles_group {
+  translation 0.175 0.4 0
+  name "bottom_right"
 }
-DEF blue_tile blue_tile {
-  translation 0.175 0.375001 0.015
-  name "blue_tile_2"
+DEF tiles_group tiles_group {
+  translation 0.175 1.2 0
+  name "bottom_left"
 }
-DEF yellow_tile yellow_tile {
-  translation 0.175 0.425002 0.015
-  name "yellow_tile_1"
-}
-DEF yellow_tile yellow_tile {
-  translation 0.175 0.475003 0.015
-  name "yellow_tile_2"
-}
-DEF blue_tile blue_tile {
-  translation 0.175 1.125 0.015
-  name "blue_tile_3"
-}
-DEF yellow_tile yellow_tile {
-  translation 0.175 1.175001 0.015
-  name "yellow_tile_3"
-}
-DEF blue_tile blue_tile {
-  translation 0.175 1.225002 0.015
-  name "blue_tile_4"
-}
-DEF yellow_tile yellow_tile {
-  translation 0.175 1.275 0.015
-  name "yellow_tile_4"
-}
-DEF blue_tile blue_tile {
-  translation 1.025 0.175 0.015
+DEF tiles_group tiles_group {
+  translation 1.1 0.175 0
   rotation 0 0 1 1.57
-  name "blue_tile_5"
+  name "center_bottom_right"
 }
-DEF yellow_tile yellow_tile {
-  translation 1.075 0.175 0.015
+DEF tiles_group tiles_group {
+  translation 1.15 0.8 0
   rotation 0 0 1 1.57
-  name "yellow_tile_5"
+  name "center_bottom_left"
 }
-DEF blue_tile blue_tile {
-  translation 1.125 0.175 0.015
+DEF tiles_group tiles_group {
+  translation 1.9 0.175 0
   rotation 0 0 1 1.57
-  name "blue_tile_6"
+  name "center_top_right"
 }
-DEF yellow_tile yellow_tile {
-  translation 1.175 0.175 0.015
+DEF tiles_group tiles_group {
+  translation 1.85 0.8 0
   rotation 0 0 1 1.57
-  name "yellow_tile_6"
+  name "center_top_left"
 }
-DEF blue_tile blue_tile {
-  translation 1.075 0.8 0.015
-  rotation 0 0 1 1.57
-  name "blue_tile_7"
+DEF tiles_group tiles_group {
+  translation 2.825 0.4 0
+  name "top_right"
 }
-DEF yellow_tile yellow_tile {
-  translation 1.125 0.8 0.015
-  rotation 0 0 1 1.57
-  name "yellow_tile_7"
+DEF tiles_group tiles_group {
+  translation 2.825 1.2 0
+  name "top_left"
 }
-DEF yellow_tile yellow_tile {
-  translation 1.175 0.8 0.015
-  rotation 0 0 1 1.57
-  name "yellow_tile_8"
+
+DEF cursor cursor {
+  translation 0.15 -0.0125 0.071
+  rotation 0 0.7071067811865476 0.7071067811865476 3.14
+  name "cursor_1"
 }
-DEF blue_tile blue_tile {
-  translation 1.225 0.8 0.015
-  rotation 0 0 1 1.57
-  name "blue_tile_8"
+
+DEF cursor cursor {
+  translation 2.85 -0.0125 0.071
+  rotation 0 0.7071067811865476 0.7071067811865476 3.14
+  name "cursor_2"
 }

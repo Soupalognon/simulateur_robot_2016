@@ -3,11 +3,13 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
 
 PROTO arena_cdr2026 [
-  field SFString   name         "arena_cdr2026"
-  field MFString   url          [""]
+    field SFVec3f    translation  0 0 0
+    field SFString   name         "arena_cdr2026"
+    field MFString   url          [""]
 ]
 {
     Solid {
+        translation IS translation
         name IS name
         children [
             Floor {
@@ -27,7 +29,7 @@ PROTO arena_cdr2026 [
                 }
             }
             Solid {
-                translation 1.5 -0.025 0.025
+                translation 1.5 -0.0125 0.0125
                 children [
                     DEF wall Shape {
                     appearance PBRAppearance {
@@ -36,7 +38,7 @@ PROTO arena_cdr2026 [
                         metalness 0
                     }
                     geometry Box {
-                        size 3 0.05 0.05
+                        size 3 0.025 0.115
                     }
                     }
                 ]
@@ -44,7 +46,7 @@ PROTO arena_cdr2026 [
                 boundingObject USE wall
             }
             Solid {
-                translation 1.5 2.025 0.025
+                translation 1.5 2.0125 0.0125
                 children [
                     DEF wall Shape {
                     appearance PBRAppearance {
@@ -53,7 +55,7 @@ PROTO arena_cdr2026 [
                         metalness 0
                     }
                     geometry Box {
-                        size 3 0.05 0.05
+                        size 3 0.025 0.115
                     }
                     }
                 ]
@@ -61,7 +63,7 @@ PROTO arena_cdr2026 [
                 boundingObject USE wall
             }
             Solid {
-                translation -0.025 1 0.025
+                translation -0.0125 1 0.0125
                 rotation 0 0 1 1.57
                 children [
                     DEF wall Shape {
@@ -71,7 +73,7 @@ PROTO arena_cdr2026 [
                         metalness 0
                     }
                     geometry Box {
-                        size 2 0.05 0.05
+                        size 2 0.025 0.115
                     }
                     }
                 ]
@@ -79,7 +81,7 @@ PROTO arena_cdr2026 [
                 boundingObject USE wall
             }
             Solid {
-                translation 3.025 1 0.025
+                translation 3.0125 1 0.0125
                 rotation 0 0 1 1.57
                 children [
                     DEF wall Shape {
@@ -89,7 +91,7 @@ PROTO arena_cdr2026 [
                         metalness 0
                     }
                     geometry Box {
-                        size 2 0.05 0.05
+                        size 2 0.025 0.115
                     }
                     }
                 ]

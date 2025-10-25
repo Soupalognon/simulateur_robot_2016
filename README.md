@@ -9,7 +9,24 @@ Après avoir récupéré le dossier avec l'urdf et les mesh
 Ranger l'urdf dans simulateur_robot_2016/resource/urdf
 Ranger les mesh dans simulateur_robot_2016/resource/meshes/visual
 
+## Conversion de Solidworks vers stl pour le visuel
+### Etape 1: Modifier le scaling du stl
+Quand on exporte un fichier stl sur Solidworks l'unité est le mm alors que webots utilise le mètre.
+Il faut exporter son fichier sur Solidworks et l'importer dans Meshlab.
+Ensuite il faut aller dans Filter -> Normals,Curves and Orientations -> Transform: Scale,Normalize
+Mettre pour les 3 axes 0.001 et cliquer sur Apply.
+https://www.universal-robots.com/articles/ur/actinav/actinav-how-to-use-meshlab-to-resize-your-part-models/
 
+### Etape 2: Modifier l'origine du stl
+On veut que l'origine du stl soir au centre.
+On aller dans Filter -> Normals, Curvatures and Orientation -> Transform: Translate, Center, Set Origin
+Dans la liste déroulante "Transformation" --> Center on Layer BBox
+Cliquer Apply.
+https://revthat.com/updating-origin-meshes-meshlab/
+
+### Etape 3: Exporter
+Ensuite il faut aller dans File -> Export mesh as...
+Maintenant le fichier est importable dans Webots
 
 ## Conversion urdf vers proto (webots)
 ### Installation

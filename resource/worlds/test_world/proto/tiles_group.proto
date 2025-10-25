@@ -1,0 +1,51 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/blue_tile.proto"
+EXTERNPROTO "/home/gdu/dev_ws/src/simulateur_robot_2016/resource/worlds/test_world/proto/yellow_tile.proto"
+
+PROTO tiles_group [
+    field SFVec3f    translation  0 0 0
+    field SFRotation rotation     0 0 0 0
+    field SFString   name        "tiles_group"
+]
+{
+    %<
+    function randomNoRepeats(array) {
+        var copy = array.slice(0);
+        return function() {
+            if (copy.length < 1) { copy = array.slice(0); }
+            var index = Math.floor(Math.random() * copy.length);
+            var item = copy[index];
+            copy.splice(index, 1);
+            return item;
+        };
+    }
+
+    // we add a very small offset to positions to be sure boundingObjects are not merged at startup
+    var chooser = randomNoRepeats([-0.0750001, -0.0250002, 0.0250003, 0.0750004]);
+    
+    // console.log("Random index for tiles '" + fields.name.value + "': " + random);
+    >%
+    Transform {
+        translation IS translation
+        rotation IS rotation
+        children [
+            DEF blue_tile blue_tile {
+                translation 0 %<= chooser() >% 0.015
+                name %<= "\"" + fields.name.value + "_1" + "\"" >%
+            }
+            DEF blue_tile blue_tile {
+                translation 0 %<= chooser() >% 0.015
+                name %<= "\"" + fields.name.value + "_2" + "\"" >%
+            }
+            DEF yellow_tile yellow_tile {
+                translation 0 %<= chooser() >% 0.015
+                name %<= "\"" + fields.name.value + "_3" + "\"" >%
+            }
+            DEF yellow_tile yellow_tile {
+                translation 0 %<= chooser() >% 0.015
+                name %<= "\"" + fields.name.value + "_4" + "\"" >%
+            }
+        ]
+    }
+}

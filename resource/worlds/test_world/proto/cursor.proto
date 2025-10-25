@@ -1,0 +1,66 @@
+#VRML_SIM R2025a utf8
+
+PROTO cursor [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 0 0
+  field SFString   name         "cursor"
+]
+{
+    Solid {
+        name IS name
+        translation IS translation
+        rotation IS rotation
+        children [
+            DEF cursor Shape {
+                appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                }
+                geometry Mesh {
+                    url [
+                    "../../../meshes/visual/cursor.stl"
+                    ]
+                }
+            }
+        ]
+        boundingObject Group {
+            children [
+            Pose {
+                translation 0 -0.015 0.0175
+                children [
+                Box {
+                    size 0.1 0.03 0.01
+                }
+                ]
+            }
+            Pose {
+                translation 0 -0.025 -0.0175
+                children [
+                Box {
+                    size 0.1 0.05 0.01
+                }
+                ]
+            }
+            Pose {
+                translation 0 0.025 0
+                children [
+                Box {
+                    size 0.1 0.05 0.045
+                }
+                ]
+            }
+            ]
+        }
+        physics Physics {
+            density -1
+            mass 0.1
+            centerOfMass [
+            0 0 0
+            ]
+            inertiaMatrix [
+            1 1 1
+            0 0 0
+            ]
+        }
+    }
+}
