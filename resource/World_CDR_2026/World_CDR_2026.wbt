@@ -8,20 +8,32 @@ EXTERNPROTO "proto/arena_cdr2026.proto"
 EXTERNPROTO "proto/granary.proto"
 EXTERNPROTO "proto/cursor.proto"
 EXTERNPROTO "proto/tiles_group.proto"
+EXTERNPROTO "../Robot/proto/Assemblage_Carcasse.proto"
 
 WorldInfo {
+  basicTimeStep 20
 }
 Viewpoint {
   orientation -0.05737314792485143 0.9595978227862124 0.2754638640568921 0.4274647429076606
   position -3.184852351735873 0.12182307545429322 2.0138557823579966
 }
+
+Assemblage_Carcasse {
+  translation 0.3 1.775 0.015
+  rotation 0 0 1 -1.57
+  controller "<extern>"
+  controllerArgs [
+    ""
+  ]
+}
+
 TexturedBackgroundLight {
 }
 TexturedBackground {
 }
 DEF arena_cdr2026 arena_cdr2026 {
   url [
-    "background.jpg"
+    "proto/background.jpg"
   ]
 }
 DEF granary granary {

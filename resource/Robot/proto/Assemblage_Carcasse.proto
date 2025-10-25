@@ -367,7 +367,7 @@ PROTO Assemblage_Carcasse [
         }
       }
       Solid {
-        translation 0.100000 -0.107992 0.200000
+        translation 0.200000 -0.107992 0.0500000
         children [
           DEF EPUCK_PS0 distance_sensor {
             translation 0 0 0

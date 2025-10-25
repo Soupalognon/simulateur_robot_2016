@@ -12,21 +12,27 @@ PROTO arena_cdr2026 [
         translation IS translation
         name IS name
         children [
-            Floor {
+            Solid {
                 translation 1.5 1 0
-                size 3 2
-                tileSize 3 2
-                appearance Appearance {
-                    texture ImageTexture {
-                    url IS url
-                    repeatS FALSE
-                    repeatT FALSE
+                children [
+                    DEF ground Shape {
+                    appearance Appearance {
+                        texture ImageTexture {
+                        url IS url
+                        repeatS FALSE
+                        repeatT FALSE
+                        }
+                        textureTransform TextureTransform {
+                        rotation 1.57
+                        translation 0 -1
+                        }
                     }
-                    textureTransform TextureTransform {
-                    rotation 1.57
-                    translation 0 -1
+                    geometry Plane {
+                        size 3 2
                     }
-                }
+                    }
+                ]
+                boundingObject USE ground
             }
             Solid {
                 translation 1.5 -0.0125 0.0125

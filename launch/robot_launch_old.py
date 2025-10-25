@@ -26,7 +26,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([resource_dir, 'World_CDR_2026', world]),
+        world=PathJoinSubstitution([resource_dir, 'Robot', world]),
         mode=mode,
         ros2_supervisor=True
     )
@@ -122,7 +122,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'world',
-            default_value='World_CDR_2026.wbt',
+            default_value='World_Test.wbt',
             description='Choose one of the world files from `/simulateur_robot_2016/resource/worlds` directory'
         ),
         DeclareLaunchArgument(
