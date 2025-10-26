@@ -75,13 +75,17 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <origin xyz="-0.0255 0.044 -0.005" rpy="0 0 -0.44"/>
+      <geometry>
+        <box size="0.12 0.006 0.08"/>
+      </geometry>
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_left_link.stl" />
-      </geometry>
+      </geometry> -->
     </collision>
   </link>
   <joint
@@ -136,13 +140,17 @@
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="-0.0255 -0.044 -0.005" rpy="0 0 0.435"/>
       <geometry>
+        <box size="0.12 0.006 0.08"/>
+      </geometry>
+      <!-- <origin
+        xyz="0 0 0"
+        rpy="0 0 0" /> -->
+      <!-- <geometry>
         <mesh
           filename="package://simulateur_robot_2016/resource/Robot/meshes/collision/arm_right_link.stl" />
-      </geometry>
+      </geometry> -->
     </collision>
   </link>
   <joint

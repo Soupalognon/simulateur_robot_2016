@@ -9,6 +9,8 @@ Après avoir récupéré le dossier avec l'urdf et les mesh
 Ranger l'urdf dans simulateur_robot_2016/resource/urdf
 Ranger les mesh dans simulateur_robot_2016/resource/meshes/visual
 
+
+
 ## Conversion de Solidworks vers stl pour le visuel
 ### Etape 1: Modifier le scaling du stl
 Quand on exporte un fichier stl sur Solidworks l'unité est le mm alors que webots utilise le mètre.
@@ -53,10 +55,6 @@ https://adamconkey.medium.com/collision-meshes-for-simulating-robots-in-gazebo-c
 
 Ranger tous les stl simplifié créés dans le dossier 
     simulateur_robot_2016/resource/meshes/collision
-
-
-
-
 
 
 
@@ -116,6 +114,26 @@ Voici la liste des changements:
             rpy="1.57 0 0" />
         <geometry>
         <cylinder length="0.030" radius="0.0325"/>
+        </geometry>
+    </collision>
+</link>
+
+    - les bras sont des box, modifier: (Attention si les pinces ont bougées dans le solidwork alors la box de collision sera à ajuster...)
+    (Le mieux serai de modifier le arm_link pour être uniquement la plaque et non le support et la plaque)
+<link name="arm_left_link">
+    <collision>
+      <origin xyz="-0.0255 0.044 -0.005" rpy="0 0 -0.44"/>
+      <geometry>
+        <box size="0.12 0.006 0.08"/>
+      </geometry>
+    </collision> 
+</link>
+
+<link name="arm_right_link">
+    <collision>
+        <origin xyz="-0.0255 -0.044 -0.005" rpy="0 0 0.435"/>
+        <geometry>
+            <box size="0.12 0.006 0.08"/>
         </geometry>
     </collision>
 </link>

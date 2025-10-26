@@ -19,7 +19,7 @@ PROTO blue_tile [
                     metalness 0
                 }
                 geometry Box {
-                    size 0.12 0.05 0.06
+                    size 0.15 0.05 0.03
                 }
             }
         ]
