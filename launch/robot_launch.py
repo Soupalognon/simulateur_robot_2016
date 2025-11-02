@@ -8,8 +8,8 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 import launch
 from ament_index_python.packages import get_package_share_directory, get_packages_with_prefixes
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import IncludeLaunchDescription
+# from launch.launch_description_sources import PythonLaunchDescriptionSource
+# from launch.actions import IncludeLaunchDescription
 from webots_ros2_driver.webots_launcher import WebotsLauncher
 from webots_ros2_driver.webots_controller import WebotsController
 from webots_ros2_driver.wait_for_controller_connection import WaitForControllerConnection
@@ -21,14 +21,22 @@ def generate_launch_description():
 
     world = LaunchConfiguration('world')
     mode = LaunchConfiguration('mode')
-    use_nav = LaunchConfiguration('nav', default=False)
-    use_slam = LaunchConfiguration('slam', default=False)
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
     webots = WebotsLauncher(
         world=PathJoinSubstitution([resource_dir, 'World_CDR_2026', world]),
         mode=mode,
         ros2_supervisor=True
+    )
+
+    robot_spawner = Node(
+        package='simulateur_robot_2016',
+        executable='robot_spawner',
+        output='screen',
+        arguments=[
+            'Assemblage_Carcasse',
+            "YELLOW",     #"YELLOW"   "BLUE"
+        ],
     )
 
     robot_state_publisher = Node(
@@ -120,6 +128,8 @@ def generate_launch_description():
         ),
         webots,
         webots._supervisor,
+
+        robot_spawner,
 
         robot_state_publisher,
         footprint_publisher,

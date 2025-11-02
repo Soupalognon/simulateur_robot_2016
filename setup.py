@@ -50,6 +50,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'robot_spawner = simulateur_robot_2016.robot_spawner:main'
         ],
     },
 )

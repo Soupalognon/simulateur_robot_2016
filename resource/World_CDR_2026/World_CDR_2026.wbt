@@ -28,14 +28,14 @@ Viewpoint {
   position -3.184852351735873 0.12182307545429322 2.0138557823579966
 }
 
-Assemblage_Carcasse {
-  translation 0.3 1.775 0.015
-  rotation 0 0 1 -1.57
-  controller "<extern>"
-  controllerArgs [
-    ""
-  ]
-}
+# Assemblage_Carcasse {
+#   translation 0.3 1.775 0.015
+#   rotation 0 0 1 -1.57
+#   controller "<extern>"
+#   controllerArgs [
+#     ""
+#   ]
+# }
 
 TexturedBackgroundLight {
 }
