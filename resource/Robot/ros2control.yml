@@ -24,10 +24,12 @@ diffdrive_controller:
 
     use_stamped_vel: false
     base_frame_id: "base_link"
+    odom_frame_id: "odom"
+    enable_odom_tf: true 
     
     linear:
       x:
-        max_velocity: 0.2 # Maximal speed of turtlebot
+        max_velocity: 0.2
 
 position_controller:
   ros__parameters:

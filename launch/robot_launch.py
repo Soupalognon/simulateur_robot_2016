@@ -47,6 +47,13 @@ def generate_launch_description():
         arguments=['0', '0', '0', '0', '0', '0', 'base_link', 'base_footprint'],
     )
 
+    map_publisher = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        output='screen',
+        arguments=['0.3', '1.775', '0', '-1.57', '0', '0', 'map', 'odom'],
+    )
+
     # ROS control spawners
     controller_manager_timeout = ['--controller-manager-timeout', '50']
     controller_manager_prefix = 'python.exe' if os.name == 'nt' else ''
@@ -116,6 +123,7 @@ def generate_launch_description():
 
         robot_state_publisher,
         footprint_publisher,
+        map_publisher,
 
         robot_driver,
         waiting_nodes,
