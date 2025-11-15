@@ -1,0 +1,1 @@
+robot_wall_a_msgs/ColorRecognition[] colors

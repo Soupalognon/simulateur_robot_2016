@@ -52,15 +52,15 @@ PROTO cursor [
             ]
         }
         physics Physics {
-            density -1
-            mass 0.1
-            centerOfMass [
-            0 0 0
-            ]
-            inertiaMatrix [
-            1 1 1
-            0 0 0
-            ]
+            density 1000
+            # mass 0.1
+            # centerOfMass [
+            # 0 0 0
+            # ]
+            # inertiaMatrix [
+            # 1 1 1
+            # 0 0 0
+            # ]
         }
     }
 }

@@ -8,36 +8,48 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 import launch
 from ament_index_python.packages import get_package_share_directory, get_packages_with_prefixes
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import IncludeLaunchDescription
+# from launch.launch_description_sources import PythonLaunchDescriptionSource
+# from launch.actions import IncludeLaunchDescription
 from webots_ros2_driver.webots_launcher import WebotsLauncher
 from webots_ros2_driver.webots_controller import WebotsController
 from webots_ros2_driver.wait_for_controller_connection import WaitForControllerConnection
 
 
 def generate_launch_description():
+    ROBOT_COLOR = "YELLOW"      #"YELLOW"   "BLUE"
+
     package_dir = get_package_share_directory('simulateur_robot_2016')
     resource_dir = os.path.join(package_dir, 'resource')
 
     world = LaunchConfiguration('world')
     mode = LaunchConfiguration('mode')
-    use_nav = LaunchConfiguration('nav', default=False)
-    use_slam = LaunchConfiguration('slam', default=False)
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
 
     webots = WebotsLauncher(
-        world=PathJoinSubstitution([resource_dir, 'Robot', world]),
+        world=PathJoinSubstitution([resource_dir, 'World_CDR_2026', world]),
         mode=mode,
         ros2_supervisor=True
     )
 
-    robot_state_publisher = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
+    robot_spawner = Node(
+        package='simulateur_robot_2016',
+        executable='robot_spawner',
         output='screen',
-        parameters=[{
-            'robot_description': '<robot name=""><link name=""/></robot>'
-        }],
+        arguments=[
+            'Assemblage_Carcasse',
+            ROBOT_COLOR,
+        ],
+    )
+
+    if(ROBOT_COLOR == "YELLOW"):
+        mapArguments = ['0.3', '1.775', '0', '-1.57', '0', '0', 'map', 'odom']
+    elif(ROBOT_COLOR == "BLUE"):
+        mapArguments = ['2.7', '1.775', '0', '-1.57', '0', '0', 'map', 'odom']
+    map_publisher = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        output='screen',
+        arguments=mapArguments,
     )
 
     footprint_publisher = Node(
@@ -64,7 +76,16 @@ def generate_launch_description():
         prefix=controller_manager_prefix,
         arguments=['joint_state_broadcaster'] + controller_manager_timeout,
     )
-    ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner]
+
+    position_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        output='screen',
+        prefix=controller_manager_prefix,
+        arguments=['position_controller'] + controller_manager_timeout,
+    )
+
+    ros_control_spawners = [diffdrive_controller_spawner, joint_state_broadcaster_spawner, position_controller_spawner]
 
     robot_description_path = os.path.join(resource_dir, 'Robot', 'urdf', 'Assemblage_Carcasse_webots.urdf')
     ros2_control_params = os.path.join(resource_dir, 'Robot', 'ros2control.yml')
@@ -73,7 +94,7 @@ def generate_launch_description():
         mappings = [('/diffdrive_controller/cmd_vel', '/cmd_vel'), ('/diffdrive_controller/odom', '/odom')]
     else:
         mappings = [('/diffdrive_controller/cmd_vel_unstamped', '/cmd_vel'), ('/diffdrive_controller/odom', '/odom')]
-    turtlebot_driver = WebotsController(
+    robot_driver = WebotsController(
         robot_name='Assemblage_Carcasse',
         parameters=[
             {'robot_description': robot_description_path,
@@ -85,44 +106,16 @@ def generate_launch_description():
         respawn=True
     )
 
-    # Navigation
-    navigation_nodes = []
-    os.environ['TURTLEBOT3_MODEL'] = 'burger'
-    nav2_map = os.path.join(package_dir, 'resource', 'turtlebot3_burger_example_map.yaml')
-    nav2_params = os.path.join(package_dir, 'resource', 'nav2_params.yaml')
-    if 'turtlebot3_navigation2' in get_packages_with_prefixes():
-        turtlebot_navigation = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(
-                get_package_share_directory('turtlebot3_navigation2'), 'launch', 'navigation2.launch.py')),
-            launch_arguments=[
-                ('map', nav2_map),
-                ('params_file', nav2_params),
-                ('use_sim_time', use_sim_time),
-            ],
-            condition=launch.conditions.IfCondition(use_nav))
-        navigation_nodes.append(turtlebot_navigation)
-
-    # SLAM
-    if 'turtlebot3_cartographer' in get_packages_with_prefixes():
-        turtlebot_slam = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(
-                get_package_share_directory('turtlebot3_cartographer'), 'launch', 'cartographer.launch.py')),
-            launch_arguments=[
-                ('use_sim_time', use_sim_time),
-            ],
-            condition=launch.conditions.IfCondition(use_slam))
-        navigation_nodes.append(turtlebot_slam)
-
-    # Wait for the simulation to be ready to start navigation nodes
+    # Wait for the simulation to be ready
     waiting_nodes = WaitForControllerConnection(
-        target_driver=turtlebot_driver,
-        nodes_to_start=navigation_nodes + ros_control_spawners
+        target_driver=robot_driver,
+        nodes_to_start= ros_control_spawners
     )
 
     return LaunchDescription([
         DeclareLaunchArgument(
             'world',
-            default_value='World_Test.wbt',
+            default_value='World_CDR_2026.wbt',
             description='Choose one of the world files from `/simulateur_robot_2016/resource/worlds` directory'
         ),
         DeclareLaunchArgument(
@@ -133,10 +126,12 @@ def generate_launch_description():
         webots,
         webots._supervisor,
 
-        robot_state_publisher,
-        footprint_publisher,
+        robot_spawner,
 
-        turtlebot_driver,
+        footprint_publisher,
+        map_publisher,
+
+        robot_driver,
         waiting_nodes,
 
         # This action will kill all nodes once the Webots simulation has exited

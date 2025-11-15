@@ -24,6 +24,27 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
+
+        <device reference="camera_1" type="Camera">
+            <ros>
+                <topicName>/camera_1</topicName>
+            </ros>
+        </device>
+        <device reference="camera_2" type="Camera">
+            <ros>
+                <topicName>/camera_2</topicName>
+            </ros>
+        </device>
+        <device reference="camera_3" type="Camera">
+            <ros>
+                <topicName>/camera_3</topicName>
+            </ros>
+        </device>
+        <device reference="camera_4" type="Camera">
+            <ros>
+                <topicName>/camera_4</topicName>
+            </ros>
+        </device>
     </webots>
 
     <ros2_control name="WebotsControl" type="system">

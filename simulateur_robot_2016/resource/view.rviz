@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 727
   - Class: rviz_common/Selection
@@ -59,13 +60,13 @@ Visualization Manager:
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
-        First_Link:
+        Link Tree Style: Links in Alphabetic Order
+        arm_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Link Tree Style: Links in Alphabetic Order
-        arm_Link:
+        arm_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -75,14 +76,45 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        caster1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        range_meter_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wheel_left_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         wheel_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -95,37 +127,72 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
-        First_Link:
-          Value: true
-        arm_Link:
-          Value: true
+        All Enabled: false
+        arm_left_link:
+          Value: false
+        arm_right_link:
+          Value: false
+        base_footprint:
+          Value: false
         base_link:
           Value: true
+        caster1_link:
+          Value: false
+        caster2_link:
+          Value: false
+        caster3_link:
+          Value: false
+        caster4_link:
+          Value: false
+        imu_link:
+          Value: true
+        map:
+          Value: true
+        odom:
+          Value: true
+        range_meter_link:
+          Value: false
         wheel_left_link:
-          Value: true
+          Value: false
         wheel_right_link:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
-        base_link:
-          First_Link:
-            arm_Link:
-              {}
-          wheel_left_link:
-            {}
-          wheel_right_link:
-            {}
+        map:
+          odom:
+            base_link:
+              arm_left_link:
+                {}
+              arm_right_link:
+                {}
+              base_footprint:
+                {}
+              caster1_link:
+                {}
+              caster2_link:
+                {}
+              caster3_link:
+                {}
+              caster4_link:
+                {}
+              imu_link:
+                {}
+              range_meter_link:
+                {}
+              wheel_left_link:
+                {}
+              wheel_right_link:
+                {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -168,39 +235,39 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.1170012950897217
+      Distance: 11.274613380432129
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 0.7891075015068054
+        Y: 1.002729892730713
+        Z: 0.2215428352355957
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.07039837539196014
+      Pitch: 1.115397572517395
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.818571090698242
+      Yaw: 3.1285269260406494
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
   Height: 1016
   Hide Left Dock: false
-  Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001f70000039efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000039e000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000015f0000039efc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d0000039e000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000003d80000039e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd0000000400000000000001f70000039efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000039e000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000015f0000039efc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d0000039e000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000001a00000039e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Tool Properties:
     collapsed: false
   Views:
-    collapsed: false
-  Width: 1850
-  X: 1990
+    collapsed: true
+  Width: 925
+  X: 2915
   Y: 27

@@ -6,6 +6,8 @@
   <description>TODO: Package description</description>
   <maintainer email="gabriel.durand@hotmail.fr">gdu</maintainer>
   <license>Apache-2.0</license>
+
+  <depend>simulateur_robot_2016_msgs</depend>
   
   <exec_depend>rclpy</exec_depend>
   <exec_depend>builtin_interfaces</exec_depend>
